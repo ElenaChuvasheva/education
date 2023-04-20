@@ -1,12 +1,12 @@
 from django.urls import include, path
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import DefaultRouter
 
 from api.views import EduModuleViewSet
 
 app_name = 'api'
 
-router = SimpleRouter()
-router.register('educational_modules', EduModuleViewSet)
+router = DefaultRouter()
+router.register(r'modules', EduModuleViewSet, basename='module')
 
 urlpatterns = [
     path('', include(router.urls))
