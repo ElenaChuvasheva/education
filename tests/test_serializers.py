@@ -9,19 +9,19 @@ class SerializerTests(TestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.serializer_data_full = {
-            'name': 'test serializer_data_full',
-            'description': 'test serializer_data_full description'
+            'name': 'Тестовое название full',
+            'description': 'Тестовое описание full'
         }
         cls.serializer_data_short = {
-            'name': 'test serializer_data_short'
+            'name': 'Тестовое название short'
         }
 
         cls.module_attrs_full = {
-            'name': 'test module_attrs_full',
-            'description': 'test module_attrs_full description'
+            'name': 'Тестовое название attrs_full',
+            'description': 'Тестовое описание attrs_full'
         }
         cls.module_attrs_short = {
-            'name': 'test module_attrs_short'
+            'name': 'Тестовое название attrs_short'
         }
 
         cls.module_full = EducationalModule.objects.create(

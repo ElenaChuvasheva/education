@@ -8,12 +8,14 @@ class ModelTest(TestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.test_module = EducationalModule.objects.create(
-            name='test name', description='test description')
+            name='Тестовый модуль', description='Тестовое описание')
     
     def test_str_method(self):
-        self.assertEqual(str(ModelTest.test_module), 'test name')
+        '''Метод __str__ работает правильно'''
+        self.assertEqual(str(ModelTest.test_module), 'Тестовый модуль')
         
     def test_verboses(self):
+        '''Указаны правильные verbose_name'''
         field_verboses = {
             'name': 'Название модуля',
             'description': 'Описание'
