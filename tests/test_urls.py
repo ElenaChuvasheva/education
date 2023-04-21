@@ -2,8 +2,6 @@ from django.urls import include, path, reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, URLPatternsTestCase
 
-from educational_module.models import EducationalModule
-
 
 class URLTest(APITestCase, URLPatternsTestCase):
     urlpatterns = [
@@ -29,4 +27,3 @@ class URLTest(APITestCase, URLPatternsTestCase):
         '''Запрос к несуществующей странице вернёт ошибку 404'''
         response = self.client.get(URLTest.url_unexisting)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-

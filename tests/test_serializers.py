@@ -4,8 +4,8 @@ from api.serializers import EduModuleSerializer
 from educational_module.models import EducationalModule
 
 
-class SerializerTests(TestCase):   
-    @classmethod 
+class SerializerTests(TestCase):
+    @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.serializer_data_full = {
@@ -15,7 +15,6 @@ class SerializerTests(TestCase):
         cls.serializer_data_short = {
             'name': 'Тестовое название short'
         }
-
         cls.module_attrs_full = {
             'name': 'Тестовое название attrs_full',
             'description': 'Тестовое описание attrs_full'
@@ -23,12 +22,10 @@ class SerializerTests(TestCase):
         cls.module_attrs_short = {
             'name': 'Тестовое название attrs_short'
         }
-
         cls.module_full = EducationalModule.objects.create(
             **cls.module_attrs_full)
         cls.module_short = EducationalModule.objects.create(
             **cls.module_attrs_short)
-
         cls.serializer_out_full = EduModuleSerializer(
             instance=cls.module_full)
         cls.serializer_out_short = EduModuleSerializer(
@@ -60,18 +57,19 @@ class SerializerTests(TestCase):
         '''Поле name при выводе данных имеет правильное содержание'''
         data = self.serializer_out_full.data
         self.assertEqual(data['name'], self.module_attrs_full['name'])
-    
+
     def test_serializer_full_description_content(self):
         '''Поле description при выводе данных имеет правильное содержание'''
         data = self.serializer_out_full.data
-        self.assertEqual(data['description'], self.module_attrs_full['description'])
+        self.assertEqual(data['description'],
+                         self.module_attrs_full['description'])
 
     def test_serializer_short_name_content(self):
-        '''Поле name в объекте без описания при выводе отображается правильно'''
+        '''Поле name в объекте без описания выводится правильно'''
         data = self.serializer_out_short.data
         self.assertEqual(data['name'], self.module_attrs_short['name'])
 
     def test_serializer_short_description_content(self):
-        '''Поле description в объекте без описания при выводе имеет значение None'''
+        '''Поле description в объекте без описания выводится как None'''
         data = self.serializer_out_short.data
         self.assertIsNone(data['description'])
